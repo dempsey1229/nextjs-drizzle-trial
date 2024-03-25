@@ -32,7 +32,6 @@ export const users = pgTable(
 // Schema for inserting a user - can be used to validate API requests
 const insertUserSchema = createInsertSchema(users);
 export type InsertUser = z.infer<typeof insertUserSchema>;
-
 // Schema for selecting a user - can be used to validate API responses
 const selectUserSchema = createSelectSchema(users);
 export type User = z.infer<typeof selectUserSchema>;
@@ -42,9 +41,7 @@ export const articles = pgTable('articles', {
   title: varchar('title', { length: 256 }).notNull(),
   content: text('content').notNull(),
   like: integer('like').default(0),
-  userId: uuid('user_id')
-    .references(() => users.id)
-    .notNull(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
 
   deletedAt: timestamp('deleted_at'),
   createdAt: timestamp('created_at').defaultNow(),

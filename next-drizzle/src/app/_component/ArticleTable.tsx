@@ -3,7 +3,7 @@ import { deleteArticleById } from '../_action/deleteArticleById';
 import DeleteArticleButton from './DeleteArticleButton';
 
 type ArticleTableType = {
-  articles: (Article & { author: User })[];
+  articles: (Article & { author?: User })[];
 };
 
 // 為何要把 server action 透過 props 傳遞？
@@ -27,7 +27,13 @@ async function ArticleTable({ articles }: ArticleTableType) {
           {articles.map((article) => (
             <tr key={article.id}>
               <td>{article.id}</td>
-              <td>{article.author.name}</td>
+              <td>
+                {article.author ? (
+                  <p>{article.author.name}</p>
+                ) : (
+                  <p className="text-red-500 font-bold">Author Not Found</p>
+                )}
+              </td>
               <td>{article.title}</td>
               <td>{article.like}</td>
               <td>
