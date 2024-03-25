@@ -2,24 +2,29 @@
   "name": "next-drizzle",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate:pg",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio --verbose"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@faker-js/faker": "^8.4.1",
+    "@mui/material": "^5.15.14",
     "@neondatabase/serverless": "^0.9.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.4",
+    "drizzle-zod": "^0.5.1",
     "next": "14.1.4",
     "pg": "^8.11.3",
     "postgres": "^3.4.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
