@@ -103,9 +103,8 @@ export const articlesRelations = relations(articles, ({ one }) => ({
 ```
 
 ### Include relations
-
-(圖一)
 [文件參考](https://orm.drizzle.team/docs/rqb#include-relations)
+![image](https://github.com/dempsey1229/nextjs-drizzle-trial/assets/134914196/b08bed9a-a8f9-4bb7-8bd0-238d6f477e3e)
 支援 typescript 所以會補字。
 
 ```typescript
@@ -150,7 +149,7 @@ const users = await dbInstance.query.users.findMany({
 ```
 
 但是我們會發現刪除一位 user(Kaleb) 後，article 仍然出現 author 是 Kaleb 的資料。
-(圖二)
+![image](https://github.com/dempsey1229/nextjs-drizzle-trial/assets/134914196/33855f19-f573-406a-8966-367f0923b0ba)
 
 ```typescript
 const articlesData = await dbInstance.query.articles.findMany({
@@ -167,8 +166,7 @@ const articlesDataRemoveDeletedAuthor = articlesData.map((article) => ({
   author: article.author?.deletedAt ? null : article.author,
 }));
 ```
-
-（圖三）
+![image](https://github.com/dempsey1229/nextjs-drizzle-trial/assets/134914196/10b41d73-51a9-432d-8766-f071fb569fcf)
 現在 `uuid: afae20d3-33cf-4119-af82-1198dcb0f33b` 的作者變成 not found 了。
 
 #### 延伸問題
@@ -209,12 +207,11 @@ const articlesHaveAuthor = results.map((result) => ({
   author: result.users,
 }));
 ```
-
-(圖四)
+![image](https://github.com/dempsey1229/nextjs-drizzle-trial/assets/134914196/49ee1e37-41b0-4517-b3e8-c7b0b8b67431)
 
 ### Pagination
 
-如果做分頁功能時有需要帶入參數，可以參考 prepared [(placeholder)](https://orm.drizzle.team/docs/rqb#prepared-statements) 的文件說明。
+如果做分頁功能時有需要帶入參數，可以參考 [prepared (placeholder)](https://orm.drizzle.team/docs/rqb#prepared-statements) 的文件說明。
 
 ## Bug 排解
 
