@@ -71,4 +71,3 @@ function AddArticle({ addArticle, user }: CreateRandomUserButtomType) {
 }
 
 export default AddArticle;
-// onClick={() => addArticle({title: ,content: '', userId: })}

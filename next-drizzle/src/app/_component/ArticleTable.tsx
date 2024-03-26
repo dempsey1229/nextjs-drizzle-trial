@@ -3,7 +3,7 @@ import { deleteArticleById } from '../_action/deleteArticleById';
 import DeleteArticleButton from './DeleteArticleButton';
 
 type ArticleTableType = {
-  articles: (Article & { author?: User })[];
+  articles: (Article & { author: User | null })[];
 };
 
 // 為何要把 server action 透過 props 傳遞？

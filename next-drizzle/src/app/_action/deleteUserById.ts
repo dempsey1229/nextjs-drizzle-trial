@@ -6,6 +6,9 @@ import { eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
 export async function deleteUserById(id: string) {
-  await dbInstance.delete(users).where(eq(users.id, id));
+  await dbInstance
+    .update(users)
+    .set({ deletedAt: new Date() })
+    .where(eq(users.id, id));
   revalidatePath('/');
 }
